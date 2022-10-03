@@ -24,6 +24,9 @@ jobs:
             echo "NPM --version" 
             echo $(npm --version)
             npm run frontend:install
+
+            npm uninstall typescript
+            npm install typescript@3.5.3
       # Install dependencies in the the backend API          
       - run:
           name: Install API Dependencies
@@ -44,6 +47,8 @@ jobs:
       - run:
           name: API Build
           command: |
+            apt-get update
+            apt-get install zip
             npm run api:build
   # deploy step will run only after manual approval
   deploy:
