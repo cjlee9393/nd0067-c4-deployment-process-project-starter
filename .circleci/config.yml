@@ -24,9 +24,6 @@ jobs:
             echo "NPM --version" 
             echo $(npm --version)
             npm run frontend:install
-
-            npm uninstall typescript
-            npm install typescript@3.5.3
       # Install dependencies in the the backend API          
       - run:
           name: Install API Dependencies
@@ -42,6 +39,8 @@ jobs:
       - run:
           name: Front-End Build
           command: |
+            npm uninstall typescript
+            npm install typescript@3.5.3
             npm run frontend:build
       # Build the backend API      
       - run:
